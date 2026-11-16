@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>جبهه open-world | نبرد سه‌بعدی</title>
+<link rel="stylesheet" href="css/style.css"/>
+<script type="importmap">
+{
+  "imports": {
+    "three": "/node_modules/three/build/three.module.js",
+    "three/addons/": "/node_modules/three/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ===== صفحه شروع / رول‌پلی ===== -->
+<div id="start-screen">
+  <div class="panel">
+    <h1>⚔️ جبهه — نبرد آزاد</h1>
+    <p class="subtitle">ترکیب Battlefield + War Thunder با جامعه و نقش‌آفرینی</p>
+
+    <label>نام بازیکن (نشان داده می‌شود):</label>
+    <input id="inp-name" maxlength="16" placeholder="مثلاً: علی کماندو"/>
+
+    <label>کلاس / شغل شما در جامعه:</label>
+    <select id="inp-class">
+      <option value="rifleman">پیاده‌ نظامی (Rifleman)</option>
+      <option value="medic">پزشک (Medic) — زنده کردن هم‌تیمی‌ها</option>
+      <option value="engineer">مهندس (Engineer) — تعمیر تانک و ناو</option>
+      <option value="pilot">خلبان (Pilot) — جنگنده</option>
+      <option value="tanker">تانک‌سوار (Tanker) — تانک</option>
+      <option value="sailor">دریانورد (Sailor) — ناو</option>
+      <option value="trader">تاجر (Trader) — فروش سلاح</option>
+    </select>
+
+    <label>ارتش / تیم:</label>
+    <select id="inp-team">
+      <option value="red">🔴 ارتش سرخ</option>
+      <option value="blue">🔵 ارتش آبی</option>
+    </select>
+
+    <button id="btn-start">ورود به جهان 🌍</button>
+
+    <div class="help">
+      <b>راهنما:</b><br>
+      حرکت: WASD &nbsp;|&nbsp; پرش: Space &nbsp;|&nbsp; دویدن: Shift<br>
+      تیراندازی: کلیک چپ &nbsp;|&nbsp; نشانگر: کلیک راست (قفل دوربین)<br>
+      E: سوار شدن پیاده ⇄ خارج شدن از وسیله &nbsp;|&nbsp; F: تعمیر/زنده کردن<br>
+      T: گفتگوی متنی (چت جامعه)<br>
+      داخل وسیله: W/S گاز و ترمز، A/D فرمان، Space تیر/بمب، C دوربین
+    </div>
+  </div>
+</div>
+
+<!-- ===== HUD ===== -->
+<div id="hud" class="hidden">
+  <div id="crosshair">+</div>
+
+  <div id="topbar">
+    <span id="info-team"></span>
+    <span id="info-class"></span>
+    <span id="info-mode">پیاده</span>
+    <span id="info-fps"></span>
+  </div>
+
+  <div id="vitals">
+    <div class="bar"><div id="hp-fill"></div></div>
+    <div id="hp-text">100 HP</div>
+    <div id="ammo-text">30 / ∞</div>
+    <div id="speed-text"></div>
+  </div>
+
+  <div id="minimap-box"><canvas id="minimap" width="180" height="180"></canvas></div>
+
+  <div id="killfeed"></div>
+
+  <div id="chat-box">
+    <div id="chat-log"></div>
+    <input id="chat-input" class="hidden" maxlength="120" placeholder="پیام... (Enter ارسال، Esc لغو)"/>
+  </div>
+
+  <div id="interact-hint" class="hidden"></div>
+  <div id="damage-flash"></div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
